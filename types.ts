@@ -62,7 +62,13 @@ export interface ShopItem {
   icon: string;
 }
 
+export interface TeacherProfile {
+  name: string;
+  avatar: string; // base64 encoded image or URL
+}
+
 export interface AppState {
+  teacherProfile: TeacherProfile;
   students: Student[];
   missions: Mission[];
   badges: Badge[];

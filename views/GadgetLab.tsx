@@ -8,48 +8,21 @@ interface Props {
 }
 
 const CROMOS_POOL = [
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-ice-pablo.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-guardians.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-captain-adrian.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-heroes-collectible.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-adrian-laser.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-greta-sai.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-five-fantastic.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-greta-swim.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-dani-magnifico.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-dani-batman.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-super-valentina.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-valentina-space.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-bruno-wolverine.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-pantheras.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-bruno-kick.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-sofia-super.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-sofia-spider.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-dani-dunk.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-sandro-strange.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-three-fantastic.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-sandro-guardian.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-mateo-thanos.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-mateo-cyber.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-mario-flash.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-power-trio.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-lucas-pingpong.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-adriana-storm.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-adriana-piano.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-deadpool-dani.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-sandro-silence.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-natacion-girl.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-captain-mirasur.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-martina-shazam.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-cindy-wonder.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-carla-fly.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-martina-save.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-flexible-falcon.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-skyhawk.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-maria-tennis.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-maria-football.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-five-team.png",
-  "https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/card-lucas-green.png"
+  "https://placehold.co/300x400/ed1d24/ffffff?text=HERO+CARD+%231&font=roboto",
+  "https://placehold.co/300x400/0d59f2/ffffff?text=POWER+CARD+%232&font=roboto",
+  "https://placehold.co/300x400/fecb00/000000?text=LEGEND+%233&font=roboto",
+  "https://placehold.co/300x400/8b00ff/ffffff?text=GUARDIAN+%234&font=roboto",
+  "https://placehold.co/300x400/ff6b00/ffffff?text=CHAMPION+%235&font=roboto",
+  "https://placehold.co/300x400/00d4ff/000000?text=WARRIOR+%236&font=roboto",
+  "https://placehold.co/300x400/ff0080/ffffff?text=DEFENDER+%237&font=roboto",
+  "https://placehold.co/300x400/00ff88/000000?text=STRIKER+%238&font=roboto",
+  "https://placehold.co/300x400/ed1d24/fecb00?text=CAPTAIN+%239&font=roboto",
+  "https://placehold.co/300x400/4a0080/ffffff?text=MYSTIC+%2310&font=roboto",
+  "https://placehold.co/300x400/ff4500/ffffff?text=TITAN+%2311&font=roboto",
+  "https://placehold.co/300x400/1e90ff/ffffff?text=SPEEDSTER+%2312&font=roboto",
+  "https://placehold.co/300x400/32cd32/000000?text=RANGER+%2313&font=roboto",
+  "https://placehold.co/300x400/dc143c/ffffff?text=AVENGER+%2314&font=roboto",
+  "https://placehold.co/300x400/ffd700/000000?text=SUPREME+%2315&font=roboto"
 ];
 
 const GadgetLab: React.FC<Props> = ({ state, onUpdateSextos }) => {
@@ -59,7 +32,7 @@ const GadgetLab: React.FC<Props> = ({ state, onUpdateSextos }) => {
   const [isPenaltyActive, setIsPenaltyActive] = useState(false);
   const [noiseThreshold, setNoiseThreshold] = useState(85);
   const [penaltyTriggered, setPenaltyTriggered] = useState(false);
-  
+
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -137,7 +110,7 @@ const GadgetLab: React.FC<Props> = ({ state, onUpdateSextos }) => {
       }
       analyserRef.current = null;
       if (isActive) setNoiseLevel(0);
-      
+
       if (penaltyTriggered && isPenaltyActiveRef.current) {
         const deduction = 10;
         alert(`¡Sensor Apagado! Se aplica multa de ${deduction} Sextos a toda la clase por ruido excesivo.`);
@@ -167,7 +140,8 @@ const GadgetLab: React.FC<Props> = ({ state, onUpdateSextos }) => {
           if (!isActive || !analyserRef.current || !isSensorOn) return;
           analyserRef.current.getByteFrequencyData(dataArray);
           const average = dataArray.reduce((a, b) => a + b) / bufferLength;
-          const level = Math.min(100, Math.round((average / 128) * 100));
+          // Improved sensitivity: divide by 64 instead of 128 for better ambient sound detection
+          const level = Math.min(100, Math.round((average / 64) * 100));
           setNoiseLevel(level);
           if (level > noiseThreshold) {
             setPenaltyTriggered(true);
@@ -302,8 +276,8 @@ const GadgetLab: React.FC<Props> = ({ state, onUpdateSextos }) => {
             </div>
           </div>
           <div className="bg-background-dark/50 p-4 comic-border flex justify-between items-center">
-             <div><p className="font-marker text-[10px] text-slate-500 uppercase">Alertas de Ruido</p><p className="font-comic text-3xl text-comic-yellow">{noiseViolations} STRIKES</p></div>
-             <div className="bg-comic-red/20 p-2 rounded animate-pulse"><span className={`material-symbols-outlined text-comic-red text-3xl ${noiseLevel > noiseThreshold ? 'scale-125' : ''}`}>warning</span></div>
+            <div><p className="font-marker text-[10px] text-slate-500 uppercase">Alertas de Ruido</p><p className="font-comic text-3xl text-comic-yellow">{noiseViolations} STRIKES</p></div>
+            <div className="bg-comic-red/20 p-2 rounded animate-pulse"><span className={`material-symbols-outlined text-comic-red text-3xl ${noiseLevel > noiseThreshold ? 'scale-125' : ''}`}>warning</span></div>
           </div>
           <div className="border-t border-slate-800 pt-4 flex items-center justify-between">
             <div className="flex flex-col"><span className="font-marker text-xs uppercase text-slate-500">Multar al Apagar</span><span className="text-[10px] text-slate-600 italic leading-none">{penaltyTriggered ? 'REBASADO - MULTA LISTA' : 'POR DEBAJO DEL LÍMITE'}</span></div>
@@ -316,10 +290,10 @@ const GadgetLab: React.FC<Props> = ({ state, onUpdateSextos }) => {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div className="flex items-center gap-3"><span className="material-symbols-outlined text-secondary">timer</span><h3 className="font-comic text-2xl uppercase italic leading-none">Cronómetro de Misión</h3></div>
             <div className="flex items-center gap-2 bg-background-dark p-2 border-2 border-black shadow-[4px_4px_0px_#000]">
-               <div className="flex flex-col items-center"><input type="number" min="0" max="30" value={customMinutes} onChange={e => setCustomMinutes(Number(e.target.value))} className="w-14 bg-transparent text-center font-comic text-2xl text-white outline-none" /><span className="text-[10px] font-marker text-slate-500 uppercase">MINS</span></div>
-               <span className="text-white font-bold text-2xl">:</span>
-               <div className="flex flex-col items-center"><input type="number" min="0" max="59" value={customSeconds} onChange={e => setCustomSeconds(Number(e.target.value))} className="w-14 bg-transparent text-center font-comic text-2xl text-white outline-none" /><span className="text-[10px] font-marker text-slate-500 uppercase">SEGS</span></div>
-               <button onClick={handleApplyTimer} className="ml-4 bg-secondary text-white font-comic px-5 py-2 text-lg comic-border hover:bg-white hover:text-secondary transition-all">SET</button>
+              <div className="flex flex-col items-center"><input type="number" min="0" max="30" value={customMinutes} onChange={e => setCustomMinutes(Number(e.target.value))} className="w-14 bg-transparent text-center font-comic text-2xl text-white outline-none" /><span className="text-[10px] font-marker text-slate-500 uppercase">MINS</span></div>
+              <span className="text-white font-bold text-2xl">:</span>
+              <div className="flex flex-col items-center"><input type="number" min="0" max="59" value={customSeconds} onChange={e => setCustomSeconds(Number(e.target.value))} className="w-14 bg-transparent text-center font-comic text-2xl text-white outline-none" /><span className="text-[10px] font-marker text-slate-500 uppercase">SEGS</span></div>
+              <button onClick={handleApplyTimer} className="ml-4 bg-secondary text-white font-comic px-5 py-2 text-lg comic-border hover:bg-white hover:text-secondary transition-all">SET</button>
             </div>
           </div>
           <div className="flex-1 flex flex-col items-center justify-center py-8"><div className={`text-[12rem] font-comic italic tracking-tighter text-secondary drop-shadow-[0_0_20px_rgba(127,13,242,0.4)] text-stroke leading-none ${isTimerRunning ? 'animate-pulse' : ''}`}>{formatTime(timeLeft)}</div></div>
@@ -331,17 +305,17 @@ const GadgetLab: React.FC<Props> = ({ state, onUpdateSextos }) => {
 
         {/* Cromo Especial */}
         <div className="bg-panel bg-[#211b27] comic-border p-6 flex flex-col gap-6 h-full border-comic-yellow">
-           <div className="flex items-center gap-3"><span className="material-symbols-outlined text-comic-yellow text-3xl">style</span><h3 className="font-comic text-2xl uppercase italic leading-none text-white">Cromo Especial</h3></div>
-           <div className="flex-1 bg-black/40 comic-border relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]">
-              {selectedCromo ? (
-                <div className={`w-full h-full p-2 animate-in zoom-in duration-500`}><img src={selectedCromo} className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(254,203,0,0.5)]" alt="Cromo" /></div>
-              ) : isCromoLoading ? (
-                <div className="flex flex-col items-center gap-4"><div className="size-20 border-4 border-comic-yellow border-t-transparent rounded-full animate-spin"></div><p className="font-comic text-xl text-comic-yellow animate-pulse uppercase">Invocando...</p></div>
-              ) : (
-                <div className="flex flex-col items-center text-slate-600 text-center px-4"><span className="material-symbols-outlined text-7xl mb-4">auto_awesome</span><p className="font-marker uppercase text-xs">Descubre un cromo legendario</p></div>
-              )}
-           </div>
-           <button onClick={pickRandomCromo} disabled={isCromoLoading} className="w-full py-4 bg-comic-yellow text-black font-comic text-2xl tracking-widest comic-border hover:bg-white transition-all active:scale-95 disabled:opacity-50">¡INVOCAR CROMO!</button>
+          <div className="flex items-center gap-3"><span className="material-symbols-outlined text-comic-yellow text-3xl">style</span><h3 className="font-comic text-2xl uppercase italic leading-none text-white">Cromo Especial</h3></div>
+          <div className="flex-1 bg-black/40 comic-border relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]">
+            {selectedCromo ? (
+              <div className={`w-full h-full p-2 animate-in zoom-in duration-500`}><img src={selectedCromo} className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(254,203,0,0.5)]" alt="Cromo" /></div>
+            ) : isCromoLoading ? (
+              <div className="flex flex-col items-center gap-4"><div className="size-20 border-4 border-comic-yellow border-t-transparent rounded-full animate-spin"></div><p className="font-comic text-xl text-comic-yellow animate-pulse uppercase">Invocando...</p></div>
+            ) : (
+              <div className="flex flex-col items-center text-slate-600 text-center px-4"><span className="material-symbols-outlined text-7xl mb-4">auto_awesome</span><p className="font-marker uppercase text-xs">Descubre un cromo legendario</p></div>
+            )}
+          </div>
+          <button onClick={pickRandomCromo} disabled={isCromoLoading} className="w-full py-4 bg-comic-yellow text-black font-comic text-2xl tracking-widest comic-border hover:bg-white transition-all active:scale-95 disabled:opacity-50">¡INVOCAR CROMO!</button>
         </div>
 
         {/* Hero Selector */}

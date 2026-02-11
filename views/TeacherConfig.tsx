@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
-import { AppState, Badge, Student, Reason, HelperRoleConfig } from '../types';
+import { AppState, Badge, Student, Reason, HelperRoleConfig, TeacherProfile } from '../types';
+
 
 interface Props {
   state: AppState;
@@ -208,7 +209,31 @@ const TeacherConfig: React.FC<Props> = ({ state, setState }) => {
                       <tr className="hover:bg-slate-50 transition-colors">
                         <td className="p-4">
                           <div className="flex items-center gap-3">
-                            <img src={s.avatar} className="size-10 border-2 border-black rounded-full bg-white shadow-sm" />
+                            <div className="relative group">
+                              <img src={s.avatar} className="size-10 border-2 border-black rounded-full bg-white shadow-sm cursor-pointer hover:opacity-80 transition-opacity" />
+                              <label
+                                className="absolute inset-0 cursor-pointer flex items-center justify-center bg-black/0 hover:bg-black/60 rounded-full transition-all group-hover:opacity-100 opacity-0"
+                                title="Cambiar avatar"
+                              >
+                                <span className="material-symbols-outlined text-white text-sm">upload</span>
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  onChange={(e) => {
+                                    const file = e.target.files?.[0];
+                                    if (!file) return;
+
+                                    const reader = new FileReader();
+                                    reader.onload = (event) => {
+                                      const base64 = event.target?.result as string;
+                                      updateStudentField(s.id, 'avatar', base64);
+                                    };
+                                    reader.readAsDataURL(file);
+                                  }}
+                                  className="hidden"
+                                />
+                              </label>
+                            </div>
                             <input
                               type="text"
                               value={s.alias}
@@ -360,33 +385,100 @@ const TeacherConfig: React.FC<Props> = ({ state, setState }) => {
       )}
 
       {activeTab === 'SYSTEM' && (
-        <div className="bg-white comic-border p-8 shadow-[10px_10px_0px_#000]">
-          <h3 className="font-comic text-3xl uppercase italic text-black border-b-4 border-black pb-2 mb-6">HERRAMIENTAS DE SISTEMA</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <h4 className="font-display font-bold text-xl text-slate-900 uppercase">Exportar Datos</h4>
-              <p className="text-sm text-slate-600">Descarga una copia de seguridad completa del estado de la clase (puntos, niveles, misiones) en formato JSON.</p>
-              <button
-                onClick={exportData}
-                className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-comic text-xl border-4 border-black shadow-[4px_4px_0px_#000] active:shadow-none active:translate-y-1"
-              >
-                <span className="material-symbols-outlined">download</span>
-                DESCARGAR BACKUP
-              </button>
-            </div>
-            <div className="space-y-4">
-              <h4 className="font-display font-bold text-xl text-slate-900 uppercase">Importar Datos</h4>
-              <p className="text-sm text-slate-600">Sube un archivo .json de Universexto para restaurar una copia de seguridad previa o mover los datos a otro equipo.</p>
-              <label className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white font-comic text-xl border-4 border-black shadow-[4px_4px_0px_#000] cursor-pointer hover:bg-black active:shadow-none active:translate-y-1">
-                <span className="material-symbols-outlined">upload</span>
-                SUBIR ARCHIVO JSON
-                <input type="file" accept=".json" onChange={importData} className="hidden" />
-              </label>
+        <div className="space-y-8">
+          {/* Teacher Profile Section */}
+          <div className="bg-white comic-border p-8 shadow-[10px_10px_0px_#000]">
+            <h3 className="font-comic text-3xl uppercase italic text-black border-b-4 border-black pb-2 mb-6">PERFIL DEL PROFESOR</h3>
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              <div className="flex flex-col items-center gap-4">
+                <div className="size-32 bg-slate-100 border-4 border-black overflow-hidden shadow-[6px_6px_0px_#000]">
+                  <img
+                    src={state.teacherProfile.avatar}
+                    alt="Avatar del profesor"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <label className="inline-flex items-center gap-2 px-6 py-3 bg-comic-yellow text-black font-comic text-lg border-4 border-black shadow-[4px_4px_0px_#000] cursor-pointer hover:bg-secondary hover:text-white active:shadow-none active:translate-y-1 transition-all uppercase">
+                  <span className="material-symbols-outlined">upload</span>
+                  SUBIR AVATAR
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+
+                      const reader = new FileReader();
+                      reader.onload = (event) => {
+                        const base64 = event.target?.result as string;
+                        setState(prev => ({
+                          ...prev,
+                          teacherProfile: {
+                            ...prev.teacherProfile,
+                            avatar: base64
+                          }
+                        }));
+                      };
+                      reader.readAsDataURL(file);
+                    }}
+                    className="hidden"
+                  />
+                </label>
+              </div>
+              <div className="flex-1 space-y-4">
+                <div>
+                  <label className="font-display font-bold text-sm text-slate-900 uppercase mb-2 block">Nombre del Profesor</label>
+                  <input
+                    type="text"
+                    value={state.teacherProfile.name}
+                    onChange={(e) => setState(prev => ({
+                      ...prev,
+                      teacherProfile: {
+                        ...prev.teacherProfile,
+                        name: e.target.value
+                      }
+                    }))}
+                    className="w-full border-2 border-black p-3 font-bold text-slate-900 uppercase focus:ring-2 focus:ring-secondary outline-none"
+                    placeholder="Nombre del profesor..."
+                  />
+                </div>
+                <div className="p-4 bg-slate-50 border-2 border-dashed border-slate-300">
+                  <p className="font-marker text-[10px] text-slate-500 uppercase mb-1">Información</p>
+                  <p className="text-xs text-slate-600 italic">Puedes subir una imagen desde tu ordenador. Los formatos soportados son: JPG, PNG, GIF, WEBP. La imagen se guardará localmente en el navegador.</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="mt-12 p-4 bg-comic-red/10 border-2 border-dashed border-comic-red">
-            <p className="font-marker text-xs text-comic-red uppercase">AVISO DE SEGURIDAD</p>
-            <p className="text-xs text-slate-800 mt-1 italic">Los datos se guardan localmente en este navegador. Si borras el historial o cambias de ordenador sin exportar primero, perderás el progreso de la clase.</p>
+
+          {/* System Tools Section */}
+          <div className="bg-white comic-border p-8 shadow-[10px_10px_0px_#000]">
+            <h3 className="font-comic text-3xl uppercase italic text-black border-b-4 border-black pb-2 mb-6">HERRAMIENTAS DE SISTEMA</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <h4 className="font-display font-bold text-xl text-slate-900 uppercase">Exportar Datos</h4>
+                <p className="text-sm text-slate-600">Descarga una copia de seguridad completa del estado de la clase (puntos, niveles, misiones) en formato JSON.</p>
+                <button
+                  onClick={exportData}
+                  className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-comic text-xl border-4 border-black shadow-[4px_4px_0px_#000] active:shadow-none active:translate-y-1"
+                >
+                  <span className="material-symbols-outlined">download</span>
+                  DESCARGAR BACKUP
+                </button>
+              </div>
+              <div className="space-y-4">
+                <h4 className="font-display font-bold text-xl text-slate-900 uppercase">Importar Datos</h4>
+                <p className="text-sm text-slate-600">Sube un archivo .json de Universexto para restaurar una copia de seguridad previa o mover los datos a otro equipo.</p>
+                <label className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white font-comic text-xl border-4 border-black shadow-[4px_4px_0px_#000] cursor-pointer hover:bg-black active:shadow-none active:translate-y-1">
+                  <span className="material-symbols-outlined">upload</span>
+                  SUBIR ARCHIVO JSON
+                  <input type="file" accept=".json" onChange={importData} className="hidden" />
+                </label>
+              </div>
+            </div>
+            <div className="mt-12 p-4 bg-comic-red/10 border-2 border-dashed border-comic-red">
+              <p className="font-marker text-xs text-comic-red uppercase">AVISO DE SEGURIDAD</p>
+              <p className="text-xs text-slate-800 mt-1 italic">Los datos se guardan localmente en este navegador. Si borras el historial o cambias de ordenador sin exportar primero, perderás el progreso de la clase.</p>
+            </div>
           </div>
         </div>
       )}

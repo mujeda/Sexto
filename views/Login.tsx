@@ -32,11 +32,14 @@ const Login: React.FC<LoginProps> = ({ onTeacherLogin, onStudentLogin, students 
       <div className="max-w-2xl w-full">
         <div className="text-center mb-8">
           <div className="inline-block mb-6 group transition-all duration-500">
-            <img 
-              src="https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/header-logo.png" 
-              alt="UNIVERSEXTO MARVEL" 
-              className="w-full max-w-xl h-auto border-4 border-black shadow-[12px_12px_0px_#ed1d24] group-hover:shadow-[12px_12px_0px_#fecb00] group-hover:-translate-y-1 transition-all"
-            />
+            <div className="bg-comic-red border-4 border-black shadow-[12px_12px_0px_#000] group-hover:shadow-[12px_12px_0px_#fecb00] group-hover:-translate-y-1 transition-all p-6">
+              <h1 className="font-comic text-6xl md:text-7xl text-white italic uppercase tracking-tighter text-stroke leading-none">
+                UNIVERSEXTO
+              </h1>
+              <p className="font-marker text-comic-yellow text-xl md:text-2xl uppercase tracking-widest text-center mt-2">
+                HERO HQ
+              </p>
+            </div>
           </div>
           <h2 className="text-3xl font-comic text-comic-yellow italic uppercase tracking-widest text-stroke">Centro de Acceso Universal</h2>
         </div>
@@ -44,13 +47,13 @@ const Login: React.FC<LoginProps> = ({ onTeacherLogin, onStudentLogin, students 
         <div className="max-w-md mx-auto bg-white p-8 comic-border space-y-6">
           {mode === 'CHOICE' && (
             <div className="grid grid-cols-1 gap-4">
-              <button 
+              <button
                 onClick={() => setMode('TEACHER')}
                 className="py-4 bg-secondary text-white font-comic text-2xl tracking-widest comic-border hover:scale-105 transition-transform"
               >
                 SOY EL PROFESOR
               </button>
-              <button 
+              <button
                 onClick={() => setMode('STUDENT')}
                 className="py-4 bg-comic-yellow text-black font-comic text-2xl tracking-widest comic-border hover:scale-105 transition-transform"
               >
@@ -62,14 +65,14 @@ const Login: React.FC<LoginProps> = ({ onTeacherLogin, onStudentLogin, students 
           {mode === 'TEACHER' && (
             <div className="space-y-4">
               <label className="block text-black font-bold uppercase text-sm">Clave de Acceso Profesor</label>
-              <input 
+              <input
                 type="password"
                 className="w-full border-4 border-black p-3 text-black font-bold focus:ring-0"
                 placeholder="****"
                 value={inputCode}
                 onChange={(e) => setInputCode(e.target.value)}
               />
-              <button 
+              <button
                 onClick={handleTeacherAuth}
                 className="w-full py-4 bg-secondary text-white font-comic text-2xl tracking-widest comic-border"
               >
@@ -84,7 +87,7 @@ const Login: React.FC<LoginProps> = ({ onTeacherLogin, onStudentLogin, students 
               <p className="text-xs text-slate-500 font-bold uppercase mb-2">Identifícate, Héroe:</p>
               <div className="max-h-64 overflow-y-auto space-y-2 border-2 border-black p-2">
                 {students.map(s => (
-                  <button 
+                  <button
                     key={s.id}
                     onClick={() => {
                       setSelectedStudentId(s.id);
@@ -106,23 +109,23 @@ const Login: React.FC<LoginProps> = ({ onTeacherLogin, onStudentLogin, students 
               <div className="flex items-center gap-4 bg-slate-100 p-3 border-2 border-black">
                 <img src={students.find(s => s.id === selectedStudentId)?.avatar} className="size-12 bg-white border border-black rounded-full" />
                 <div className="flex-1">
-                   <p className="text-[10px] text-slate-500 font-bold uppercase">Identidad Seleccionada</p>
-                   <p className="font-comic text-xl text-black">{students.find(s => s.id === selectedStudentId)?.alias}</p>
+                  <p className="text-[10px] text-slate-500 font-bold uppercase">Identidad Seleccionada</p>
+                  <p className="font-comic text-xl text-black">{students.find(s => s.id === selectedStudentId)?.alias}</p>
                 </div>
                 <button onClick={() => setSelectedStudentId(null)} className="text-slate-400 hover:text-black">
-                   <span className="material-symbols-outlined">edit</span>
+                  <span className="material-symbols-outlined">edit</span>
                 </button>
               </div>
-              
+
               <label className="block text-black font-bold uppercase text-sm">Tu Código Secreto Personal</label>
-              <input 
+              <input
                 type="text"
                 className="w-full border-4 border-black p-3 text-black font-bold focus:ring-0"
                 placeholder="HERO-XXXX"
                 value={inputCode}
                 onChange={(e) => setInputCode(e.target.value)}
               />
-              <button 
+              <button
                 onClick={() => handleStudentAuth(students.find(s => s.id === selectedStudentId)!)}
                 className="w-full py-4 bg-comic-yellow text-black font-comic text-2xl tracking-widest comic-border"
               >

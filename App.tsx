@@ -15,11 +15,15 @@ const App: React.FC = () => {
   const [role, setRole] = useState<Role>('GUEST');
   const [activeStudentId, setActiveStudentId] = useState<string | null>(null);
   const [currentView, setCurrentView] = useState<string>('DASHBOARD');
-  
+
   const [state, setState] = useState<AppState>(() => {
-    const saved = localStorage.getItem('universexto_state_v5');
+    const saved = localStorage.getItem('universexto_state_v6');
     if (saved) return JSON.parse(saved);
     return {
+      teacherProfile: {
+        name: 'Profesor',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=teacher'
+      },
       students: INITIAL_STUDENTS,
       missions: INITIAL_MISSIONS,
       badges: INITIAL_BADGES,
@@ -50,7 +54,7 @@ const App: React.FC = () => {
   });
 
   useEffect(() => {
-    localStorage.setItem('universexto_state_v5', JSON.stringify(state));
+    localStorage.setItem('universexto_state_v6', JSON.stringify(state));
   }, [state]);
 
   const updateStudentSextos = (id: string, amount: number) => {
@@ -60,8 +64,8 @@ const App: React.FC = () => {
         if (s.id !== id) return s;
         const newLifetime = amount > 0 ? s.lifetimeSextos + amount : s.lifetimeSextos;
         const newLevel = Math.floor(newLifetime / 200) + 1;
-        return { 
-          ...s, 
+        return {
+          ...s,
           sextos: Math.max(0, s.sextos + amount),
           lifetimeSextos: newLifetime,
           level: newLevel
@@ -117,7 +121,7 @@ const App: React.FC = () => {
   const togglePurchaseUsage = (studentId: string, purchaseId: string, forceUsed?: boolean) => {
     setState(prev => ({
       ...prev,
-      students: prev.students.map(s => 
+      students: prev.students.map(s =>
         s.id === studentId ? {
           ...s,
           purchases: s.purchases.map(p => p.id === purchaseId ? { ...p, used: forceUsed !== undefined ? forceUsed : !p.used } : p)
@@ -133,7 +137,7 @@ const App: React.FC = () => {
 
   if (role === 'GUEST') {
     return (
-      <Login 
+      <Login
         onTeacherLogin={() => setRole('TEACHER')}
         onStudentLogin={(id) => {
           setRole('STUDENT');
@@ -152,12 +156,13 @@ const App: React.FC = () => {
       <aside className="w-72 bg-comic-yellow border-r-4 border-black flex flex-col h-full relative z-20 shadow-[8px_0px_30px_rgba(0,0,0,0.5)]">
         <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(black_1px,transparent_0)] bg-[length:4px_4px]"></div>
         <div className="p-6">
-          <div className="comic-border overflow-hidden bg-white hover:scale-105 transition-transform cursor-pointer group p-1">
-            <img 
-              src="https://raw.githubusercontent.com/fede-pro-ai/universexto-assets/main/header-logo.png" 
-              alt="UNIVERSEXTO HQ" 
-              className="w-full h-auto object-contain p-1 group-hover:drop-shadow-[0_0_8px_#ed1d24] transition-all"
-            />
+          <div className="comic-border overflow-hidden bg-comic-red hover:scale-105 transition-transform cursor-pointer group p-4">
+            <h2 className="font-comic text-4xl text-white italic uppercase tracking-tighter text-stroke leading-none text-center">
+              UNIVERSEXTO
+            </h2>
+            <p className="font-marker text-comic-yellow text-sm uppercase tracking-widest text-center mt-1">
+              HERO HQ
+            </p>
           </div>
         </div>
 
@@ -224,9 +229,9 @@ const App: React.FC = () => {
         ) : (
           <>
             {currentView === 'DASHBOARD' && activeStudent && (
-              <StudentDashboard 
-                student={activeStudent} 
-                state={state} 
+              <StudentDashboard
+                student={activeStudent}
+                state={state}
                 onUseItem={(purchaseId) => togglePurchaseUsage(activeStudentId!, purchaseId, true)}
                 onMissionSeen={(mid) => updateStudentMissionSeen(activeStudentId!, mid)}
               />
