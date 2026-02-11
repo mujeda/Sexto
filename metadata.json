@@ -1,0 +1,7 @@
+{
+  "name": "Universexto - Hero Classroom Management",
+  "description": "A comprehensive superhero-themed gamification platform for classrooms, featuring a teacher command center and a hero interface for students to manage their progress, currency (Sextos), and missions.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
